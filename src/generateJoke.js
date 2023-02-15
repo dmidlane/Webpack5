@@ -1,7 +1,16 @@
+import axios from 'axios'
+
 function generateJoke() {
-    return `Big Moron and Little Moron
-     were on a bridge. Big Moron fell off, but the other didn’t 
-     because… he was a little more on.`
+    
+    const config = {
+        headers: {
+            Accept: 'application/json'
+        }
+    }
+
+    axios.get('https://icanhazdadjoke.com', config).then(response => {
+        document.getElementById('joke').innerHTML = response.data.joke
+    })
 }
 
 export default generateJoke
